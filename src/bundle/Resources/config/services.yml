@@ -1,0 +1,10 @@
+services:
+    Edgar\EzBinaryFileIndexer\FieldMapper\ContentTranslationFieldMapper\BinaryFileFieldMapper:
+        arguments:
+            - '@ezpublish.spi.persistence.content_type_handler'
+            - '@ezpublish.search.common.field_registry'
+            - '@ezpublish.search.solr.field_mapper.boost_factor_provider'
+            - '@ezpublish.fieldType.ezbinaryfile.io_service'
+            - "%kernel.root_dir%"
+        tags:
+            - {name: ezpublish.search.solr.field_mapper.content_translation}

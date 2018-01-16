@@ -1,0 +1,33 @@
+{
+  "name": "edgar/ez-binaryfileindexer-bundle",
+  "license": "GPL-2.0",
+  "type": "ezplatform-bundle",
+  "description": "eZ Platform content related external file search indexation",
+  "authors": [
+    {
+      "name": "Emmanuel DROUET"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Edgar\\EzBinaryFileIndexerBundle\\": "src/bundle/",
+      "Edgar\\EzBinaryFileIndexer\\": "src/lib/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": { "Edgar\\EzBinaryFileIndexerBundle\\Tests\\": "src/bundle/Tests" }
+  },
+  "require": {
+    "php": ">=7.1",
+    "ezsystems/ezpublish-kernel": "^7.0",
+    "ezsystems/ezplatform-solr-search-engine": "^1.5",
+    "ninoskopac/php-tika-wrapper": "~1.0"
+  },
+  "require-dev": {
+    "friendsofphp/php-cs-fixer": "~2.7.1",
+    "phpunit/phpunit": "^6.4"
+  },
+  "scripts": {
+    "fix-cs": "@php ./vendor/bin/php-cs-fixer fix -v --show-progress=estimating"
+  }
+}
