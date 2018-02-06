@@ -37,12 +37,21 @@ class BinaryFileFieldMapper extends ContentTranslationFieldMapper
      */
     protected $boostFactorProvider;
 
-    /** @var IOService  */
+    /** @var IOService */
     protected $ioService;
 
-    /** @var string  */
+    /** @var string */
     protected $kernelRootDir;
 
+    /**
+     * BinaryFileFieldMapper constructor.
+     *
+     * @param ContentTypeHandler $contentTypeHandler
+     * @param FieldRegistry $fieldRegistry
+     * @param BoostFactorProvider $boostFactorProvider
+     * @param IOService $ioService
+     * @param string $kernelRootDir
+     */
     public function __construct(
         ContentTypeHandler $contentTypeHandler,
         FieldRegistry $fieldRegistry,
@@ -57,6 +66,14 @@ class BinaryFileFieldMapper extends ContentTranslationFieldMapper
         $this->kernelRootDir = $kernelRootDir;
     }
 
+    /**
+     * Indicates if the mapper accepts given $content and $languageCode for mapping.
+     *
+     * @param Content $content
+     * @param string $languageCode
+     *
+     * @return bool
+     */
     public function accept(Content $content, $languageCode)
     {
         $fields = $content->fields;
@@ -69,6 +86,16 @@ class BinaryFileFieldMapper extends ContentTranslationFieldMapper
         return false;
     }
 
+    /**
+     * Maps given $content for $languageCode to an array of search fields.
+     *
+     * @param Content $content
+     * @param string $languageCode
+     *
+     * @return array|Field[]
+     *
+     * @throws \eZ\Publish\API\Repository\Exceptions\NotFoundException
+     */
     public function mapFields(Content $content, $languageCode)
     {
         $fields = [];
