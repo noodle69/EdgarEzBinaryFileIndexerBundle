@@ -1,5 +1,5 @@
 {
-  "name": "edgar/ez-binaryfileindexer-bundle",
+  "name": "aleblanc/ez-binaryfileindexer-bundle",
   "license": "GPL-2.0-only",
   "type": "ezplatform-bundle",
   "description": "eZ Platform content related external file search indexation",

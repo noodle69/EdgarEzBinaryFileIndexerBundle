@@ -136,11 +136,14 @@ class BinaryFileFieldMapper extends ContentTranslationFieldMapper
 
                     $binaryFile = $this->ioService->loadBinaryFile($field->value->externalData['id']);
                     $binaryFilePath = $this->kernelRootDir . '/../web' . $binaryFile->uri;
-                    $plaintext = TikaWrapper::getText($binaryFilePath);
+                    
+                    if (file_exists($binaryFilePath) and is_file($binaryFilePath)) {
+                        $plaintext = TikaWrapper::getText($binaryFilePath);
+                    }
 
                     $fields[] = new Field(
                         self::$fieldName,
-                        $plaintext,
+                        $plaintext ?? '',
                         $this->getIndexFieldType($contentType)
                     );
                 }
